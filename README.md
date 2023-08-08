@@ -17,9 +17,7 @@ docker run -it -d --user 1000 -p 1025:1025 -p 1143:1143 -p 8080:8080 -v hydroxid
 ```
 
 Ports:
-    1025: SMTP server
-    1143: IMAP server
-    8080: Carddav HTTP server
+1025: SMTP server (for sending emails), 1143: IMAP server (for receiving emails), 8080: Carddav HTTP server
 
 After running the container, you need to login to your Protonmail account with your proton username. You can do this by running:
 
@@ -28,13 +26,14 @@ docker exec -it hydroxide hydroxide auth <proton user name>
 ```
 
 
-### IMPORTANT: You must run the container with the `--user 1000`(your user id) flag. This is because the container runs as root by default and hydroxide will not run as root and cause filesystem permission error.
+### IMPORTANT: You must run the container with the `--user 1000`(your user id) flag. This is because the container runs as 101 by default and if ur user id is not 101, hydroxide will not run as root and cause filesystem permission error.
 
 to get your user id, run the following command:
 
 ```
 id -u
 ```
+todo: fix the default user id to 1000 or better yet, make it configurable.
 ## Setup
 
 Below are some basic instructions to get you started.
