@@ -4,7 +4,7 @@ services:
   hydroxide:
     container_name: hydroxide
     hostname: hydroxide
-    image: ma-04/hydroxide:latest
+    image: ma04/hydroxide:latest
     restart: unless-stopped
     user: "1000:1000"
     volumes:
