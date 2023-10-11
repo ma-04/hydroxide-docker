@@ -12,14 +12,12 @@ ENV GOPATH /go
 # build hydroxide
 RUN git -C ./src/ clone https://github.com/emersion/hydroxide/
 RUN cd /go/src/hydroxide/cmd/hydroxide && go build . && go install . && cd
+RUN mkdir /hydroxide
 
 # container OS
 FROM alpine:3
 
 ENV XDG_CONFIG_HOME /
-
-USER root
-
 EXPOSE 1025 1143 8080
 
 # update / dependencies
@@ -29,7 +27,6 @@ RUN apk --update upgrade \
 
 RUN addgroup -S hydroxide && adduser -h /hydroxide -S hydroxide -G hydroxide
 RUN chown -R hydroxide:hydroxide /hydroxide
-
 # copy hydroxide
 COPY --chown=hydroxide:hydroxide --from=builder /go/bin/hydroxide /usr/bin/hydroxide
 
