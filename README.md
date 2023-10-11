@@ -39,12 +39,12 @@ id -u
 ```
 todo: fix the default user id to 1000 or better yet, make it configurable.
 
-### docker-compose
+# Docker-Compose
 
 If you require a `docker-compose` file, see [docker-compose.yml](docker-compose.yml). If you are unfamiliar with docker-compose, here is some code to get you started.
 
 
-# navigate to this repo by changing the directory
+### Navigate to this repo by changing the directory
 ```
 cd hydroxide-docker
 ```
