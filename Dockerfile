@@ -28,13 +28,13 @@ RUN apk --update upgrade \
     && apk --no-cache add ca-certificates bash openrc \
     && rm -rf /var/cache/apk/*
 
-RUN addgroup -S hydroxide && adduser -S hydroxide -G hydroxide
+RUN addgroup -S hydroxide && adduser -h /hydroxide -S hydroxide -G hydroxide
 
 # copy hydroxide
 COPY --chown=hydroxide:hydroxide --from=builder /go/bin/hydroxide /usr/bin/hydroxide
 
 # using copy instead of volume to avoid permission issues
-COPY --chown=hydroxide:hydroxide --from=builder /hydroxide /hydroxide
+#COPY --chown=hydroxide:hydroxide --from=builder /hydroxide /hydroxide
 
 USER hydroxide
 WORKDIR /hydroxide
