@@ -17,12 +17,12 @@ First, you need to run the container and link it to your other apps. You can do 
 docker run:
 
 ```
-docker run -it -d --user 1000 -p 1025:1025 -p 1143:1143 -p 8080:8080 -v hydroxide-data:/hydroxide --name hydroxide ma04/hydroxide:latest serve
+docker run -it -d --user 1000 -p 1025:1025 -p 1143:1143 -p 8080:8080 -v ./hydroxide-data:/hydroxide --name hydroxide ma04/hydroxide:latest serve
 ```
-
 Ports:
 1025: SMTP server (for sending emails), 1143: IMAP server (for receiving emails), 8080: Carddav HTTP server
 
+WARNING: you may need to create the folder first as a non root user in your system, still working on the fix
 After running the container, you need to login to your Protonmail account with your proton username. You can do this by running:
 
 ```
@@ -37,7 +37,7 @@ to get your user id, run the following command:
 ```
 id -u
 ```
-todo: fix the default user id to 1000 or better yet, make it configurable.
+todo: fix the default user id to 1000 or better yet, make it configurable. (still an issue ig :( )
 
 # Docker-Compose
 
@@ -48,7 +48,10 @@ If you require a `docker-compose` file, see [docker-compose.yml](docker-compose.
 ```
 cd hydroxide-docker
 ```
-
+Create a folder for the data
+```
+mkdir hydroxide_data
+```
 make appropriate changes to the docker-compose.yml file and then run the following commands
 
 ```
