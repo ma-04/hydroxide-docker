@@ -28,11 +28,12 @@ RUN apk --update upgrade \
     && rm -rf /var/cache/apk/*
 
 RUN addgroup -S hydroxide && adduser -S hydroxide -G hydroxide
-RUN mkdir /hydroxide && chown hydroxide:hydroxide /hydroxide
-# copy hydroxide
-COPY --from=builder /go/bin/hydroxide /usr/bin/hydroxide
-
 USER hydroxide
+
+RUN mkdir /hydroxide && chown -R hydroxide:hydroxide /hydroxide
+
+# copy hydroxide
+COPY --chown=hydroxide:hydroxide --from=builder /go/bin/hydroxide /usr/bin/hydroxide
 
 WORKDIR /hydroxide
 
