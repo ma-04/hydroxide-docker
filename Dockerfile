@@ -12,7 +12,6 @@ ENV GOPATH /go
 # build hydroxide
 RUN git -C ./src/ clone https://github.com/emersion/hydroxide/
 RUN cd /go/src/hydroxide/cmd/hydroxide && go build . && go install . && cd
-RUN mkdir /hydroxide
 
 # container OS
 FROM alpine:3
@@ -29,12 +28,10 @@ RUN apk --update upgrade \
     && rm -rf /var/cache/apk/*
 
 RUN addgroup -S hydroxide && adduser -h /hydroxide -S hydroxide -G hydroxide
+RUN chown -R hydroxide:hydroxide /hydroxide
 
 # copy hydroxide
 COPY --chown=hydroxide:hydroxide --from=builder /go/bin/hydroxide /usr/bin/hydroxide
-
-# using copy instead of volume to avoid permission issues
-#COPY --chown=hydroxide:hydroxide --from=builder /hydroxide /hydroxide
 
 USER hydroxide
 WORKDIR /hydroxide
