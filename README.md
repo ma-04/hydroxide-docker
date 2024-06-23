@@ -64,4 +64,4 @@ After running the container, you need to login to your Protonmail account with y
 docker exec -it hydroxide hydroxide auth <proton username>
 ```
 
-
+or you can use your existing hydroxide by moving it inside the hydroxide-data folder and restarting/starting the container
