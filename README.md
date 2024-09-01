@@ -1,3 +1,4 @@
+[![ci](https://github.com/ma-04/hydroxide-docker/actions/workflows/ci.yml/badge.svg)](https://github.com/ma-04/hydroxide-docker/actions/workflows/ci.yml)
 # Hydroxide Dockerfile
 
 This repository provides an example Dockerfile configuration for [hydroxide](https://github.com/emersion/hydroxide).
