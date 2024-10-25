@@ -1,3 +1,6 @@
+# This repository is deprecated in favor of separate repository
+# [New repository](https://github.com/ma-04/docker_builds/tree/main/hydroxide)
+
 [![ci](https://github.com/ma-04/hydroxide-docker/actions/workflows/ci.yml/badge.svg)](https://github.com/ma-04/hydroxide-docker/actions/workflows/ci.yml)
 # Hydroxide Dockerfile
 
